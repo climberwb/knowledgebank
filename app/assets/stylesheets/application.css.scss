@@ -1,1 +1,10 @@
- @import "bootstrap";
+/*
+ *= require_self
+ */
+
+@import "bootstrap";
+
+h1{
+  
+  color:red;
+}

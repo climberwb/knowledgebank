@@ -25,3 +25,5 @@ gem 'bootstrap-sass', '~> 3.1.1'
  group :development do
    gem 'sqlite3'
  end
+
+ gem 'devise'

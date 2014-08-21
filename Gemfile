@@ -29,3 +29,5 @@ gem 'redcarpet'
  end
 
  gem 'devise'
+
+ gem 'pundit'

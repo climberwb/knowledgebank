@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818225706) do
+ActiveRecord::Schema.define(version: 20140830002452) do
+
+  create_table "collaborations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "wiki_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collaborations", ["user_id"], name: "index_collaborations_on_user_id"
+  add_index "collaborations", ["wiki_id"], name: "index_collaborations_on_wiki_id"
 
 # Could not dump table "users" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -27,5 +37,12 @@ ActiveRecord::Schema.define(version: 20140818225706) do
   end
 
   add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"
+
+  create_table "wikis_users", force: true do |t|
+    t.integer "users_id"
+    t.integer "wikis_id"
+    t.integer "collaborator"
+    t.boolean "collaborators", default: true
+  end
 
 end

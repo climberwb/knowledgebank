@@ -5,3 +5,21 @@
 <% end %>
 <p><%= markdown @wiki.body %></p>
 <% end %>
+
+<!-- render current collaborats -->
+<%= @collaborators.to_a %>
+
+<p><strong>list of collaborators</strong></p>
+
+<% @collaborators.each do |collaborator| %> 
+<div class = "media">
+  <div class = "media-body">
+    <div class = "media-heading">
+       <p><%= User.find(collaborator.user_id).name%></p>
+
+          <%= link_to "Delete",wiki_collaboration_path(@wiki, collaborator), method: :delete %>
+     </div>
+   </div>
+ </div>
+<%end%>
+

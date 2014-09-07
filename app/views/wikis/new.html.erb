@@ -10,6 +10,8 @@
    </div>
  </div>
 <div class = "col-md-8">
+  <%= puts "WIKI: #{@wiki} !!!!!!!!!" %>
+<%= puts "COLLAB: #{@collaboration} !!!!!!!!!!" %>
   <%= form_for @wiki do |f| %>
     <div class = "form-group">
       <%= f.label :title %>
@@ -29,4 +31,8 @@
     </div>
   <% end %>
   </div>
+
 </div>
+<%= render partial: "collaboration/new",locals: { wiki: @wiki, collaboration: @collaboration} %>
+<%= puts "WIKI: #{wiki} !!!!!!!!!" %>
+<%= puts "COLLAB: #{collaboration} !!!!!!!!!!" %>

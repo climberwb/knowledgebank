@@ -11,13 +11,14 @@
 
 <p><strong>list of collaborators</strong></p>
 
+<!-- render collaborators with kainari pagination -->
 <% @collaborators.each do |collaborator| %> 
 <div class = "media">
   <div class = "media-body">
-    <div class = "media-heading">
+    <div id = "collaboration-<%= collaborator.id %>" class = "media-heading">
        <p><%= User.find(collaborator.user_id).name%></p>
 
-          <%= link_to "Delete",wiki_collaboration_path(@wiki, collaborator), method: :delete %>
+          <%= link_to "Delete", wiki_collaboration_path(@wiki, collaborator), method: :delete,remote: true %>
      </div>
    </div>
  </div>

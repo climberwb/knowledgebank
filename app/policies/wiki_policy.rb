@@ -9,6 +9,7 @@ class WikiPolicy < ApplicationPolicy
 
 def show?
   # false
-    scope.where(:id => record.id).exists? &&  (record.public? ==true ||  (user.present? && (record.user == user || user.role?(:admin))))     
+    scope.where(:id => record.id).exists? &&  (record.public? ==true ||  (user.present? && (record.user == user || user.role?(:admin)  || record.users.where(:id => user.id).present?)))  
   end
+
 end

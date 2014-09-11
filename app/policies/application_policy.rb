@@ -23,8 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-     user.present? && (record.user == user || user.role?(:admin))
-
+     user.present? && ((record.user == user || user.role?(:admin)) || (record.users.where(:id => user.id).present?))
   end
 
   def edit?
@@ -38,6 +37,10 @@ class ApplicationPolicy
 
   def scope
     record.class
+  end
+
+  def edit_form_settings?
+    scope.where(:id => record.id).exists? &&  (record.public? ==true ||  (user.present? && (record.user == user || user.role?(:admin)))) 
   end
 end
 

@@ -31,3 +31,5 @@ gem 'redcarpet'
  gem 'devise'
 
  gem 'pundit'
+ gem 'kaminari'
+

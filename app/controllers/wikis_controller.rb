@@ -1,11 +1,13 @@
 class WikisController < ApplicationController
+
+
   def index
     @wikis = Wiki.all
   end
 
   def show
     @wiki = Wiki.find(params[:id])
-    @collaborators = @wiki.collaborations
+    @collaborations = @wiki.collaborations.order(:id).page( params[:page]).per(8)
     authorize @wiki
   end
 
@@ -43,18 +45,31 @@ class WikisController < ApplicationController
   end
 end
 def destroy
-    @wiki = Wiki.find(params[:wiki_id])
-    @collaborator = @wiki.users.find(params[:user_id])
-
+    @wikis = Wiki.all
+    @wiki = Wiki.find(params[:id])
+    @collaborator = @wiki.collaborations #users.find(params[:user_id])
+    authorize @wiki
    
     # authorize @comment
+    # if @wiki.destroy && @collaborator.destroy
+    #   flash[:notice] = "Wiki #{@wiki} was removed."
+    #   redirect_to wikis_path
+    # else
+    #   flash[:error] = "Collaboration couldn't be deleted. Try again."
+    # end
 
     if @collaborator.destroy
-      flash[:notice] = "Collaboration was removed."
+      flash[:notice] = "Collaboration #{@collaborator.name} was removed."
     else
       flash[:error] = "Collaboration couldn't be deleted. Try again."
     end
-
+   
+   if @wiki.destroy && @collaborator.destroy
+      flash[:notice] = "Wiki #{@wiki.title} was removed."
+      redirect_to wikis_path
+    else
+      flash[:error] = "Collaboration couldn't be deleted. Try again."
+    end
     # respond_with(@comment) do |f|
     #   f.html { redirect_to [@topic, @post] }
     # end

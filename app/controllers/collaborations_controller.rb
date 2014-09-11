@@ -10,8 +10,17 @@ class CollaborationsController < ApplicationController
   def create
 
     @wiki = Wiki.find(params[:wiki_id])
-     
-    @collaboration = @wiki.collaborations.where(user_id: current_user.id).build(user_id: User.find_by_name(params[:collaboration][:user_name]).id)
+    
+    #if Collaboration.find(User.find_by_name(params[:collaboration][:user_name]).id) == nil
+    begin
+     # @collaboration = @wiki.collaborations.where(user_id: current_user.id).build(user_id: User.find_by_name(params[:collaboration][:user_name]).id)
+   # end
+   user_by_name = User.find_by_name(params[:collaboration][:user_name])
+   @collaboration = @wiki.collaborations.where(user_id: user_by_name.id).first_or_initialize
+   # else
+  #     flash[:error] = "You already have #{User.find_by_name(params[:collaboration][:user_name]).name} as a collaborator was saved"
+  #       redirect_to  @wiki
+  # #  end
     #build(:name => "Jake")
    # @collaboration = current_user.collaborations.build(params.require(:collaboration).permit(:user_id))#User.find_by_name(:user_name).id)
      # @collaboration = @wiki.collaborations.where(user_id: current_user.id).first
@@ -23,16 +32,20 @@ class CollaborationsController < ApplicationController
      #  flash[:error] = "col was not saved"
      #  render :new
      # end
-
-    # # raise
+    
+     
     if @collaboration.save
       flash[:notice] = "collaborator was saved"
       redirect_to  @wiki
     else
       flash[:error] = "collaborator was not saved"
-      render :new
+      redirect_to  @wiki
       #flash[:notice] = User.find_by_name(:user_name)
     end
+  rescue
+    flash[:error] = "collaborator was not saved. #{params[:collaboration][:user_name]} is not a user "
+      redirect_to  @wiki
+  end 
   end
 
   def destroy
@@ -46,11 +59,6 @@ class CollaborationsController < ApplicationController
       flash[:error] = "Collaboration couldn't be deleted. Try again."
     end
   end
-
-private
-def collaboration_attributes
-    params.require(:collaboration).permit(:user_name)
-end
 end
 
 

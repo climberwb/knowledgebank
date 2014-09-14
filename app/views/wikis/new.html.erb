@@ -15,7 +15,7 @@
   <%= form_for @wiki do |f| %>
     <div class = "form-group">
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+      <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title", id: 'wiki_title' %>
     </div>
     <div class = "form-group">
       <%= f.label :body %>
@@ -27,7 +27,7 @@
         <% end %>
     </div>
     <div class = "form-group">
-      <%= f.submit class: 'btn btn-success' %>
+      <%= f.submit class: 'btn btn-success' ,id: 'wiki_submit'  %>
     </div>
   <% end %>
   </div>

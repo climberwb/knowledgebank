@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :wikis do 
     # member do
     #   get 'collaboration'
@@ -13,5 +14,8 @@ Rails.application.routes.draw do
   get 'welcome/about'
 
   root to: 'welcome#index'
+  resources :users do
+ resources :wikis
+end
 end
 

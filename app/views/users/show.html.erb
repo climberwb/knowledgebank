@@ -1,0 +1,18 @@
+<%if policy(@user).show? %>
+  <h1>Users#show</h1>
+  <p>Find me in app/views/users/show.html.erb</p>
+  <ul>
+  <% @wikis.each do |wiki| %> 
+  <div class = "media">
+    <div class = "media-body">
+      <div class = "media-heading">
+         <p><%= link_to wiki.title, wiki_path(wiki.id)%></p>
+       </div>
+       <small>
+       </small>
+     </div>
+   </div>
+  <%end%>
+
+  </ul>
+<%end%>

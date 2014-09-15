@@ -9,7 +9,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @collaborations = @wiki.collaborations.order(:id).page( params[:page]).per(8)
     authorize @wiki
-
+    
   end
 
   def new
@@ -28,7 +28,7 @@ class WikisController < ApplicationController
     @wiki = current_user.wikis.build(params.require(:wiki).permit(:title, :body, :public))
      authorize @wiki
 
-    if @wiki.save
+    if @wiki.save 
       flash[:notice] = "Wiki was saved"
       redirect_to  @wiki
     else

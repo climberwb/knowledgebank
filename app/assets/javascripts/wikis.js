@@ -1,7 +1,37 @@
-$(document).ready(function()
-{
-  alert(1);
-});
+//  $.ajax({ url: "collaborations/collaboration_search?query=#{text}", 
+//   beforeSend: function( xhr ) { 
+//     xhr.overrideMimeType( "text/plain; charset=x-user-defined" ); 
+//   } 
+// }).done(function( data ) { 
+//   if( console && console.log ) { 
+//     console.log( "Sample of data:", data.slice( 0, 100 ) ); 
+//   } 
+// });
+
+//$('#someInput’).keyup( function() { alert($(this).val()});
+// $(document).ready(function()
+// {
+//  // alert(1);
+
+//      $('#collaboration_user_name').on('keyup', function() { 
+     
+//       // text = $(this).val();
+//       // alert(text);
+     
+//        $.ajax({ url: "/collaborations", 
+//        beforeSend: function( xhr ) { 
+//         xhr.overrideMimeType( "text/plain; charset=x-user-defined" ); 
+//       } 
+//      }).done(function( data ) { 
+//       if( console && console.log ) { 
+//         console.log( "Sample of data:", data.slice( 0, 100 ) ); 
+//         //alert()
+       
+//       } 
+//     });
+
+//  });
+// });
 //$(function() {
  //alert('heo');
     //$("#wiki_submit").on('click', function(e) {

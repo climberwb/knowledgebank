@@ -11,36 +11,19 @@ class CollaborationsController < ApplicationController
 
     @wiki = Wiki.find(params[:wiki_id])
     
-    #if Collaboration.find(User.find_by_name(params[:collaboration][:user_name]).id) == nil
     begin
-     # @collaboration = @wiki.collaborations.where(user_id: current_user.id).build(user_id: User.find_by_name(params[:collaboration][:user_name]).id)
-   # end
-   user_by_name = User.find_by_name(params[:collaboration][:user_name])
-   @collaboration = @wiki.collaborations.where(user_id: user_by_name.id).first_or_initialize
-   # else
-  #     flash[:error] = "You already have #{User.find_by_name(params[:collaboration][:user_name]).name} as a collaborator was saved"
-  #       redirect_to  @wiki
-  # #  end
-    #build(:name => "Jake")
-   # @collaboration = current_user.collaborations.build(params.require(:collaboration).permit(:user_id))#User.find_by_name(:user_name).id)
-     # @collaboration = @wiki.collaborations.where(user_id: current_user.id).first
-     # @collaboration.user = User.find_by_name(params[:collaboration][:user_name])
-     # if @collaboration.update_attributes(collaboration_attributes)
-     #     flash[:notice] = "col was saved"
-     #     redirect_to  @wiki  
-     # else
-     #  flash[:error] = "col was not saved"
-     #  render :new
-     # end
     
-     
+   name_search = params[:collaboration][:user_name].to_s
+   
+   # once links are setup with user_id
+   #user = User.find(params[:user_id])
+
+   user_by_name = User.where('name Like ?', "%#{params[:collaboration][:user_name]}%").first
+   @collaboration = @wiki.collaborations.where(user_id: user_by_name.id).first_or_initialize
+  
     if @collaboration.save
       flash[:notice] = "collaborator was saved"
       redirect_to  @wiki
-    else
-      flash[:error] = "collaborator was not saved"
-      redirect_to  @wiki
-      #flash[:notice] = User.find_by_name(:user_name)
     end
   rescue
     flash[:error] = "collaborator was not saved. #{params[:collaboration][:user_name]} is not a user "
@@ -58,6 +41,16 @@ class CollaborationsController < ApplicationController
     else
       flash[:error] = "Collaboration couldn't be deleted. Try again."
     end
+  end
+  
+  def collaboration_search
+     #name_search = params[:collaboration][:user_name].to_s
+     puts "PARAMS: #{params.inspect}"
+     @users_by_name = User.where('name Like ?', "%#{params[:collaboration]}%")
+     puts @users_by_name.to_a
+      render json: @users_by_name.map do |user|
+        { name: user.name, id: user.id}
+     end
   end
 end
 

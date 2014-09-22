@@ -16,3 +16,12 @@
 //= require_tree .
  //= require bootstrap
 
+// $(function() {
+//  $('#collaboration_user_name').on('keyup', function() { 
+//       // text = $(this).val();
+//       // alert(text);
+//       $.get($('#new_collaboration').attr("action"), $('#new_collaboration').serialize, null, 'script');
+//       return false;
+
+//     });
+// });

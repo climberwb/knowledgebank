@@ -1,0 +1,32 @@
+$(document).ready(function()
+{
+
+
+     $('#collaboration_user_name').on('keyup', function() { 
+     
+       text = $(this).val();
+      // alert(text);
+     
+       $.ajax({ url: "/collaborations?collaboration="+text, 
+       beforeSend: function( xhr ) { 
+        xhr.overrideMimeType( "text/plain; charset=x-user-defined" ); 
+      } 
+     }).done(function( data ) {
+     //alert("test");
+      if( console && console.log ) { 
+        console.log( "Sample of data:", data.slice( 0, 1000 ) ); 
+          users = JSON.parse(data.slice( 0, 1000 ))
+         // alert(users[0].name);
+          $("#user_data ul li").remove();
+          $.each( users, function( index, value ) {
+            $("#user_data ul").append("<li role='presentation'>"+"<a role='menuitem' tabindex='-1' href='#'>"+users[index].name+ ", " +users[index].email+"</a>"+"</li>"); 
+          });
+         // $("#user_data").append("<p>"+users[0].name+"</p>");
+<%@user = "data.slice(0,1000)"%>
+$("#user_data").append(<%=@user.class%>);
+      }   
+
+    });
+
+ });
+});

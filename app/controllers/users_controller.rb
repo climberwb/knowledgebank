@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  def index
-  end
+  
 
   def show
      if current_user.id == params[:id].to_i
@@ -12,7 +11,8 @@ class UsersController < ApplicationController
          redirect_to root_path
      end
   end
-
+  def index
+  end
   def new
   end
 

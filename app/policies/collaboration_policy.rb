@@ -1,3 +1,4 @@
-class PostPolicy < ApplicationPolicy
+class CollaborationPolicy < ApplicationPolicy
+
 
 end

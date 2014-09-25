@@ -1,0 +1,9 @@
+
+//alert(hello); 
+users = JSON.parse(data);
+
+$("#user_data ul li").remove();
+$.each( users, function( index, value ) {
+  $("#user_data ul").append("<li role='presentation'>"+ <%= link_to @collaboration.user.name, collaboration_path(@collaboration) %> "<a role='menuitem' tabindex='-1' href='#'>"+users[index].name+ ", " +users[index].email+"</a>"+"</li>"); 
+});
+alert(hello); 

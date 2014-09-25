@@ -1,3 +1,5 @@
+
+
 //  $.ajax({ url: "collaborations/collaboration_search?query=#{text}", 
 //   beforeSend: function( xhr ) { 
 //     xhr.overrideMimeType( "text/plain; charset=x-user-defined" ); 

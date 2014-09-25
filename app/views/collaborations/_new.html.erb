@@ -5,24 +5,20 @@
     <div class = "form-group">
       <%= f.label :user_name %>
       <%= f.text_field :user_name, class: 'form-control', placeholder: "Enter name"  %>
-  
     </div>
+    <%= f.hidden_field :user_id %>
     <div class = "form-group">
       <%= f.submit class: 'btn btn-success' %>
     </div>
   </div>
  
     <div id="user_data" class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-    Dropdown
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
+  <ul class="list-group" style= "width:50%">
+    <!-- <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li> -->
   </ul>
 </div>
  

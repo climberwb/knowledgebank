@@ -19,6 +19,10 @@ gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'redcarpet'
 
+group :development, :test do
+  gem 'pry-nav'
+end
+
  group :production do
    gem 'pg'
    gem 'rails_12factor'
@@ -32,4 +36,4 @@ gem 'redcarpet'
 
  gem 'pundit'
  gem 'kaminari'
-
+ gem 'json'

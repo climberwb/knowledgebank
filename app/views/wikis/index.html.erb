@@ -2,17 +2,55 @@
 <% if policy(Wiki.new).create? %>
  <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
 <% end %>
-<% @wikis.each do |wiki| %> 
-<div class = "media">
-  <div class = "media-body">
-    <div class = "media-heading">
-       <p><%= link_to wiki.title, wiki_path(wiki.id)%></p>
-     </div>
-     <small>
-      submitted <%= time_ago_in_words(wiki.created_at) %> ago by <%= wiki.user.name %><br/>
-     </small>
-   </div>
- </div>
-<%end%>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">List of Wikis</div>
 
+  <!-- Table -->
+  <table class="table">
+    <THEAD>
+    <TR>
+      <TH SCOPE=col ROWSPAN=2>Wiki</TH>
+      <TH SCOPE=col ROWSPAN=2>time Submitted</TH>
+      <TH SCOPE=col ROWSPAN=2>Author</TH>
+    </TR>
+  </THEAD>
+  <!-- <TBODY>
+    <TR>
+      <TD SCOPE=row>non-breaking space</TD>
+      <TD>&amp;nbsp;</TD>
+      <TD>&amp;#160;</TD>
+      <TD>&amp;#xA0;</TD>
+      <TD>&nbsp;</TD>
+      <TD>&#160;</TD>
+      <TD>&#xA0;</TD>
+    </TR>
+  </TBODY> -->
+  
+<% @wikis.each do |wiki| %> 
+<!-- <div class = "media">
+  <div class = "media-body">
+    <div class = "media-heading"> -->
+      <TBODY>
+        <TR>
+          <TD>
+            <p><%= link_to wiki.title, wiki_path(wiki.id)%></p>
+          </TD>
+             <!-- </div> -->
+            <!--  <small> -->
+            <TD>
+              <%= time_ago_in_words(wiki.created_at) %> ago 
+            </TD>
+            <TD>
+              by <%= wiki.user.name %><!-- <br/> -->
+            </TD>
+             <!-- </small> -->
+          </TD>
+        </TR>
+   <!-- </div>
+ </div> -->
+    </TBODY>
+<%end%>
+</table>
+</div>
 

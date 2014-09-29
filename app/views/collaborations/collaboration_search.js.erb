@@ -1,1 +1,3 @@
-//alert('hello');
+<% @users_by_name.each do |user| %>
+  $("#user_data ul").append("<li class='list-group-item' value =" + "<%= user.id %>" + ">" + "<%= user.name %>" + ", " + "<%= user.email %>" + "</li>"); 
+<% end %>

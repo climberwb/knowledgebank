@@ -1,34 +1,31 @@
-
-$(document).ready(function()
-{
-
-
-     $('#collaboration_user_name').on('keyup', function() { 
-     
-      text = $(this).val();
-      // alert(text);
-     
-      $.ajax({ url: "/collaborations?collaboration="+text, 
-        beforeSend: function( xhr ) { 
-          xhr.overrideMimeType( "text/plain; charset=x-user-defined" ); 
-        } 
-      }).done(function( data ) {
-        console.log( "data:", data ); 
-        users = JSON.parse(data);
-
-        $("#user_data ul li").remove();
-        $.each( users, function( index, value ) {
-          $("#user_data ul").append("<li class='list-group-item' value ="+ users[index].id+">"+users[index].name+ ", " +users[index].email+ "</li>"); 
-        });
-      <% @user = "data" %>;
-        $("#user_data").append(JSON.parse(data).name);
-        $(' .list-group-item').click(function() {
-        //alert( $(this).val() );
-            $('#collaboration_user_name').val($(this).text().split(",")[0]);
-           $('#collaboration_user_id').val($(this).val());
-      });
-    });
- });
-
-     
-});
+// -$(document).ready(function()
+// -{
+// -
+// -
+// -     $('#collaboration_user_name').on('keyup', function() { 
+// -     
+// -      text = $(this).val();
+// -      // alert(text);
+// -     
+// -      $.ajax({ url: "/collaborations?collaboration="+text, 
+// -        beforeSend: function( xhr ) { 
+// -          xhr.overrideMimeType( "text/plain; charset=x-user-defined" ); 
+// -        } 
+// -      }).done(function( data ) {
+// -        console.log( "data:", data ); 
+// -        users = JSON.parse(data);
+// -
+// -        $("#user_data ul li").remove();
+// -        $.each( users, function( index, value ) {
+// -          $("#user_data ul").append("<li class='list-group-item' value ="+ users[index].id+">"+users[index].name+ ", " +users[index].email+ "</li>"); 
+// -        });
+// -      <% @user = "data" %>;
+// -        $("#user_data").append(JSON.parse(data).name);
+// -        $(' .list-group-item').click(function() {
+// -        //alert( $(this).val() );
+// -            $('#collaboration_user_name').val($(this).text().split(",")[0]);
+// -           $('#collaboration_user_id').val($(this).val());
+// -      });
+// -    });
+// - });
+// -

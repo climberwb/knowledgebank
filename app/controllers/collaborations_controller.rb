@@ -1,6 +1,13 @@
 class CollaborationsController < ApplicationController
   respond_to :html, :js
 
+ def show
+   @wiki = Wiki.find(params[:id])
+   @collaboration = @wiki.collaborations.order(:id).page( params[:page]).per(8)
+   authorize @wiki
+ end  
+
+
   def about
   end
   
@@ -15,7 +22,7 @@ class CollaborationsController < ApplicationController
     
     begin
     
-      name_search = params[:collaboration][:user_name].to_s
+      # name_search = params[:collaboration][:user_name].to_s
      
       # once links are setup with user_id
       # user = User.find(params[:user_id])
@@ -50,7 +57,7 @@ class CollaborationsController < ApplicationController
      #name_search = params[:collaboration][:user_name].to_s
      puts "PARAMS: #{params.inspect}"
      @users_by_name = User.where('name Like ?', "%#{params[:collaboration]}%").limit(4)
-     puts @users_by_name.to_a
-      render json: @users_by_name
+     # puts @users_by_name.to_a
+     #  render json: @users_by_name
   end
 end

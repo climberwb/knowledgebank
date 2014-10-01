@@ -1,15 +1,15 @@
 <%= form_for [wiki, collaboration] do |f|%>
 
-  <%  @collaboration.each do |collaborations| %> 
+  <%  wiki.collaborations.each do |collaboration| %> 
   <% raise if collaboration.user_id.nil? %>
 
 
   <div class = "media">
     <div class = "media-body">
-      <div id = "collaborations-<%= collaborations.id %>" class = "media-heading">
-         <p><%= User.find(collaborations.user_id).name%></p>
+      <div id = "collaborations-<%= collaboration.id %>" class = "media-heading">
+         <p><%= User.find(collaboration.user_id).name%></p>
           <%if policy(@wiki).edit_form_settings? && policy(@wiki).edit?%>
-            <%= link_to "Delete", wiki_collaboration_path(@wiki, collaborations), method: :delete,remote: true %>
+            <%= link_to "Delete", wiki_collaboration_path(@wiki, collaboration), method: :delete,remote: true %>
           <%end%>
        </div>
      </div>

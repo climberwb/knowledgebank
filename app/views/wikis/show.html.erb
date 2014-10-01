@@ -16,19 +16,16 @@
 
 <!-- render collaborators with kainari pagination -->
 <% @collaborations.each do |collaboration| %> 
-<% raise if collaboration.user_id.nil? %>
-
-
 <div class = "media">
-  <div class = "media-body">
-    <div id = "collaboration-<%= collaboration.id %>" class = "media-heading">
-       <p><%= User.find(collaboration.user_id).name%></p>
-        <%if policy(@wiki).edit_form_settings? && policy(@wiki).edit?%>
-          <%= link_to "Delete", wiki_collaboration_path(@wiki, collaboration), method: :delete,remote: true %>
-        <%end%>
+    <div class = "media-body">
+      <div id = "collaborations-<%= collaboration.id %>" class = "media-heading">
+         <p><%= User.find(collaboration.user_id).name%></p>
+          <%if policy(@wiki).edit_form_settings? && policy(@wiki).edit?%>
+            <%= link_to "Delete", wiki_collaboration_path(@wiki, collaboration), method: :delete,remote: true %>
+          <%end%>
+       </div>
      </div>
    </div>
- </div>
-<%end%>
+<% end %>
 
-<%= paginate @collaborations %>
+  <%= paginate @collaborations %>

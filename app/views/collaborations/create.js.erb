@@ -1,0 +1,6 @@
+alert("hello");
+alert("<%= @collaborationname %>" );
+if( document.getElementById("collaborations-<%= @collaboration.id %>" ) === null ) {
+ $('#new_collaboration').append('<div id="collaborations-"'
+    + <%= @collaboration.id %> + ">" + "<%=  @collaborationname %></div>");
+}

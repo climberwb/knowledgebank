@@ -3,10 +3,9 @@ class CollaborationsController < ApplicationController
 
  def show
    @wiki = Wiki.find(params[:id])
-   @collaboration = @wiki.collaborations.order(:id).page( params[:page]).per(8)
+   @collaborations = @wiki.collaborations.order(:id).page( params[:page]).per(8)
    authorize @wiki
  end  
-
 
   def about
   end
@@ -29,11 +28,11 @@ class CollaborationsController < ApplicationController
 
       # user_by_name = User.where('name Like ?', "%#{params[:collaboration][:user_name]}%").first
       # @collaboration = @wiki.collaborations.where(user_id: user_by_name.id).first_or_initialize
-    
+     @collaborationname = params[:collaboration][:user_name].to_s
       @collaboration = @wiki.collaborations.where(user_id: params[:collaboration][:user_id]).first_or_initialize
       if @collaboration.save
         flash[:notice] = "collaborator was saved #{params[:collaboration][:user_name]}"
-        redirect_to  @wiki
+        # redirect_to :back
       end
     rescue
       flash[:error] = "collaborator was not saved. #{params[:collaboration][:user_name]} is not a user "

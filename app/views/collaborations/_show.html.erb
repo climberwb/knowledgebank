@@ -1,4 +1,4 @@
-<%= form_for [wiki, collaboration] do |f|%>
+<%= form_for [wiki, collaboration],:html => { :id => "collaboration_show" } do |f|%>
 
   <%  wiki.collaborations.each do |collaboration| %> 
   <% raise if collaboration.user_id.nil? %>

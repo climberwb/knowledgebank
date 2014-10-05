@@ -1,3 +1,4 @@
 <% @users_by_name.each do |user| %>
   $("#user_data ul").append("<li class='list-group-item' value =" + "<%= user.id %>" + ">" + "<%= user.name %>" + ", " + "<%= user.email %>" + "</li>"); 
 <% end %>
+ $('#collaboration_user_id').val(<%= @users_by_name.first.id%>);

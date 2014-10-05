@@ -11,7 +11,7 @@ var ready_wiki = function() {
               }
            });
 
-          $('#collaboration_user_name').on('keyup', function() { 
+      $('#collaboration_user_name').on('keyup', function() { 
        
         text = $(this).val();
        if(text.length > 1)

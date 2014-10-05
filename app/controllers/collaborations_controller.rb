@@ -31,7 +31,7 @@ class CollaborationsController < ApplicationController
      @collaborationname = params[:collaboration][:user_name].to_s
       @collaboration = @wiki.collaborations.where(user_id: params[:collaboration][:user_id]).first_or_initialize
       if @collaboration.save
-        flash[:notice] = "collaborator was saved #{params[:collaboration][:user_name]}"
+        flash[:notice] = "collaborator was saved #{User.where(id: params[:collaboration][:user_id]).first.name.to_s}"
         # redirect_to :back
       end
     rescue
@@ -55,7 +55,7 @@ class CollaborationsController < ApplicationController
   def collaboration_search
      #name_search = params[:collaboration][:user_name].to_s
      puts "PARAMS: #{params.inspect}"
-     @users_by_name = User.where('name Like ?', "%#{params[:collaboration]}%").limit(4)
+     @users_by_name = User.where('name Like ?', "%#{params[:collaboration]}%").limit(5)
      # puts @users_by_name.to_a
      #  render json: @users_by_name
   end

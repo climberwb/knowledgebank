@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  
+
   get 'user_plans/update_plan'
 
-  resources :wikis do 
+  resources :wikis do
     # member do
     #   get 'collaboration'
     # end
@@ -19,8 +19,10 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
   resources :users do
- resources :wikis
-end
+   resources :wikis
+  end
+
+  resources :charges
 
 end
 

@@ -37,3 +37,5 @@ end
  gem 'pundit'
  gem 'kaminari'
  gem 'json'
+
+ gem 'stripe'

@@ -1,5 +1,5 @@
 <h1>Edit Wiki</h1>
- 
+
  <div class="row">
    <div class="col-md-4">
      <p>Guidelines for Wikis</p>
@@ -32,7 +32,7 @@
      <% end %>
    </div>
  </div>
-<%if policy(@wiki).edit_form_settings? %>
+<%if policy(@wiki).edit_form_settings? && policy(@wiki).paid_user_perks?%>
  <%= render partial: "collaborations/new", locals: { wiki: @wiki, collaboration: @collaboration} %>
 <% end %>
 

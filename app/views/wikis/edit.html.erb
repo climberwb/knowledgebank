@@ -19,7 +19,7 @@
          <%= f.label :body %>
          <%= f.text_area :body, rows: 20, class: 'form-control', placeholder: "Enter post body" %>
        </div>
-       <%if policy(@wiki).edit_form_settings? %>
+       <%if policy(@wiki).edit_form_settings? && policy(@wiki).paid_user_perks?%>
          <div class="form-group">
           <%= f.label :public, class: 'checkbox' do %>
             <%= f.check_box :public %> Public wiki

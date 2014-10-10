@@ -42,5 +42,9 @@ class ApplicationPolicy
   def edit_form_settings?
     scope.where(:id => record.id).exists? &&  (record.public? ==true ||  (user.present? && (record.user == user || user.role?(:admin)))) 
   end
+
+  def paid_user_perks?
+      user.user_level == "Member"
+  end
 end
 

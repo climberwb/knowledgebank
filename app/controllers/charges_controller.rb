@@ -5,7 +5,8 @@ class ChargesController < ApplicationController
     def create
       # Amount in cents
       @amount = 500
-      current_user.user_level = "Member"
+      #current_user.user_level = "Member"
+      current_user.update_attribute(:user_level, "Member")
 
       customer = Stripe::Customer.create(
         :email => 'example@stripe.com',

@@ -1,5 +1,6 @@
 <%if policy(@user).show? %>
   <h1>Users#show</h1>
+  <p><strong>Membership:</strong><%if @user.user_level == "Member" %> Paid Member <% else %>Free Member <% end%></p>
   <p>Find me in app/views/users/show.html.erb</p>
   <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -13,35 +14,17 @@
       <TH SCOPE=col ROWSPAN=2>time Submitted</TH>
     </TR>
   </THEAD>
-  <!-- <TBODY>
-    <TR>
-      <TD SCOPE=row>non-breaking space</TD>
-      <TD>&amp;nbsp;</TD>
-      <TD>&amp;#160;</TD>
-      <TD>&amp;#xA0;</TD>
-      <TD>&nbsp;</TD>
-      <TD>&#160;</TD>
-      <TD>&#xA0;</TD>
-    </TR>
-  </TBODY> -->
-  
-<% @wikis.each do |wiki| %> 
-<!-- <div class = "media">
-  <div class = "media-body">
-    <div class = "media-heading"> -->
+
+<% @wikis.each do |wiki| %>
       <TBODY>
         <TR>
           <TD>
             <p><%= link_to wiki.title, wiki_path(wiki.id)%></p>
           </TD>
-             <!-- </div> -->
-            <!--  <small> -->
             <TD>
-              <%= time_ago_in_words(wiki.created_at) %> ago 
+              <%= time_ago_in_words(wiki.created_at) %> ago
             </TD>
         </TR>
-   <!-- </div>
- </div> -->
     </TBODY>
 <%end%>
 </table>

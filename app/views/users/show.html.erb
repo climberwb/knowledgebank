@@ -1,6 +1,6 @@
 <%if policy(@user).show? %>
-  <h1>Users#show</h1>
-  <p><strong>Membership:</strong><%if @user.user_level == "Member" %> Paid Member <% else %>Free Member <% end%></p>
+  <h1><%= current_user.name %>'s Log</h1>
+  <p><strong>Membership:</strong><%if @user.user_level == "Member" %> Paid Member <% else %>Free Member </br> Upgrade to a <%= link_to "paid member!", new_charge_path %><% end%></p>
   <p>Find me in app/views/users/show.html.erb</p>
   <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -26,6 +26,40 @@
             </TD>
         </TR>
     </TBODY>
+<%end%>
+</table>
+</div>
+
+
+
+
+
+ <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">List of Wikis I am a collaborator on </div>
+
+  <!-- Table -->
+  <table class="table">
+    <THEAD>
+    <TR>
+      <TH SCOPE=col ROWSPAN=2>Wiki</TH>
+      <TH SCOPE=col ROWSPAN=2>time Submitted</TH>
+    </TR>
+  </THEAD>
+
+<%  @collaboration_wikis.each do |wiki_id| %>
+    <% if wiki_id != nil%>
+      <TBODY>
+        <TR>
+          <TD>
+            <p><%= link_to Wiki.find(wiki_id).title, wiki_path(wiki_id)%></p>
+          </TD>
+            <TD>
+              <%= time_ago_in_words(Wiki.find(wiki_id).created_at) %> ago
+            </TD>
+        </TR>
+    </TBODY>
+    <%end%>
 <%end%>
 </table>
 </div>

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :users do
    resources :wikis
   end
+  get 'charges/end_plan'
 
   resources :charges
 

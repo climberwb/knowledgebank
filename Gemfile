@@ -18,7 +18,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'redcarpet'
-
+ gem 'figaro'
 group :development, :test do
   gem 'pry-nav'
 end

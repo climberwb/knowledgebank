@@ -1,6 +1,6 @@
 <%if policy(@user).show? %>
   <h1><%= current_user.name %>'s Log</h1>
-  <p><strong>Membership:</strong><%if @user.user_level == "Member" %> Paid Member <% else %>Free Member </br> Upgrade to a <%= link_to "paid member!", new_charge_path %><% end%></p>
+  <p><strong>Membership:</strong><%if @user.user_level == "Member" %> Paid Member </p><p><%=link_to "cancel plan", charges_end_plan_path, data: { confirm: 'Are you sure you want to delete your plan' } %></p> <% else %>Free Member </br> Upgrade to a <%= link_to "paid member!", new_charge_path %><% end%></p>
   <p>Find me in app/views/users/show.html.erb</p>
   <div class="panel panel-default">
   <!-- Default panel contents -->

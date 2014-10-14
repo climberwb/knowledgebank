@@ -1,5 +1,12 @@
 <%= form_tag charges_path do %>
   <article>
+    <h1>Payment instructions</h1>
+    <p>This is hooked into stripe's test account. Using this payment processor will not charge you. This form is for demonstration purposes only. Please put the information below within the the payment form.</p>
+    <ul>
+       <li>copy and paste <strong>4242 4242 4242 4242</strong> into the credit card textbox </li>
+       <li>put any future date for the expiration date</li>
+       <li>put any 3 or for digit number for cvc</li>
+    </ul>
     <label class="amount">
       <span>Amount: $10.00</span>
     </label>

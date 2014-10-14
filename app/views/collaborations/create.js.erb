@@ -1,5 +1,3 @@
-alert("hello");
-alert("<%= @collaborationname %>" );
 if( document.getElementById("collaborations-<%= @collaboration.id %>" ) === null ) {
 $('#collaboration_show').append('<div class = "media"><div class = "media-body">'+'<div id=collaborations-' + <%= @collaboration.id %> + " class = 'media-heading'>" +"<p>"+ "<%=  @collaborationname %></p>"+'<%= link_to "Delete", wiki_collaboration_path(@wiki, @collaboration), method: :delete,remote: true %>'+ '</div></div></div>');
 }

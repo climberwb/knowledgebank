@@ -13,7 +13,7 @@ class ChargesController < ApplicationController
             if customer.present?
               current_user.update_attribute(:user_level, "Member")
               current_user.update_attribute(:customer, customer.id)
-              redirect_to root_path, notice: "You payment was processed successfuly, you are now a memeber "
+              redirect_to wikis_path, notice: "You payment was processed successfuly, you are now a member "
             end
 
           rescue Stripe::CardError => e
